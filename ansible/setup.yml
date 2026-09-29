@@ -1,0 +1,13 @@
+- name: Setup Docker
+  hosts: servers
+  become: yes
+
+  tasks:
+    - name: Install Docker
+      ansible.builtin.raw: yum install -y docker
+
+    - name: Start Docker
+      ansible.builtin.service:
+        name: docker
+        state: started
+        enabled: yes
